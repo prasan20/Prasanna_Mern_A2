@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            border: 1px solid #ccc;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"].invalid,
+        input[type="email"].invalid {
+            border: 1px solid red;
+        }
+
+        .error-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 16px;
+            margin-left: 10px;
+        }
+
+        label {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <form>
+            <div class="error-container">
+                <label for="nameInput">Name:</label>
+                <input type="text" id="nameInput" name="nameInput">
+                <div class="error-message" id="nameErrorMessage"></div>
+            </div>
+            <div class="error-container">
+                <label for="emailInput">Email:</label>
+                <input type="email" id="emailInput" name="emailInput">
+                <div class="error-message" id="emailErrorMessage"></div>
+            </div>
+            <div class="error-container">
+                <label for="websiteInput">Website:</label>
+                <input type="text" id="websiteInput" name="websiteInput">
+                <div class="error-message" id="websiteErrorMessage"></div>
+            </div>
+            <div class="error-container">
+                <label for="messageInput">Message:</label>
+                <input type="text" id="messageInput" name="messageInput">
+                <div class="error-message" id="messageErrorMessage"></div>
+            </div>
+            <button type="button" onclick="validateInput()">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function validateInput() {
+            const nameInput = document.getElementById('nameInput');
+            const emailInput = document.getElementById('emailInput');
+            const websiteInput = document.getElementById('websiteInput');
+            const messageInput = document.getElementById('messageInput');
+
+            const nameErrorMessage = document.getElementById('nameErrorMessage');
+            const emailErrorMessage = document.getElementById('emailErrorMessage');
+            const websiteErrorMessage = document.getElementById('websiteErrorMessage');
+            const messageErrorMessage = document.getElementById('messageErrorMessage');
+
+            validateField(nameInput, nameErrorMessage);
+            validateField(emailInput, emailErrorMessage);
+            validateField(websiteInput, websiteErrorMessage);
+            validateField(messageInput, messageErrorMessage);
+        }
+
+        function validateField(inputField, errorMessageField) {
+            if (inputField.value.trim() === '') {
+                inputField.classList.add('invalid');
+                if (inputField == nameInput) {
+                    errorMessageField.textContent = 'This field is required';
+                }
+                else if (inputField == emailInput) {
+                    errorMessageField.textContent = 'A Valid Email address is required';
+                }
+                else if (inputField == websiteInput) {
+                    errorMessageField.textContent = 'A Valid URL is required';
+                }
+                else if (inputField == messageInput) {
+                    errorMessageField.textContent = 'This field is required';
+                }
+            }
+            else {
+                inputField.classList.remove('invalid');
+                errorMessageField.textContent = '';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const submitButton = document.querySelector('button');
+            submitButton.addEventListener('click', validateInput);
+        });
+    </script>
+</body>
+
+</html>

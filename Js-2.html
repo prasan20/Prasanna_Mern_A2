@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  #id-1,#id-2{
+    font-size:15px;
+  }
+</style>
+<body>
+  <p> Function to Alphabetically sort the letters in a String : </p>
+  <p id="id-1"></p>
+  <p id="id-2"> </p>
+  <script>
+    function AlphabeticalStringSort(inputString) {
+      return inputString.split('').sort().join('');
+    }
+    const input = 'webmaster';
+    const Output = AlphabeticalStringSort(input);
+    document.getElementById("id-1").innerHTML="Input: "+input;
+    document.getElementById("id-2").innerHTML="Output: "+Output;
+  </script>
+</body>
+</html>
+

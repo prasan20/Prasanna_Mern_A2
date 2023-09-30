@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  #id-1,#id-2{
+    font-size:15px;
+  }
+</style>
+<body>
+  <p> Function to Reverse a number: </p>
+  <p id="id-1"></p>
+  <p id="id-2"> </p>
+  <script>
+    function ReverseNumber(number) {
+      let reversed = 0;
+      while (number !== 0) {
+        reversed = reversed * 10 + number % 10;
+        number = Math.floor(number / 10);
+      }
+      return reversed;
+    }
+    const originalNumber = 32243;
+    document.getElementById("id-1").innerHTML="Original Number: "+originalNumber;
+    document.getElementById("id-2").innerHTML="Reversed Number: "+ReverseNumber(originalNumber);
+  </script>
+</body>
+</html>
